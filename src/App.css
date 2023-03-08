@@ -1,38 +1,38 @@
 .App {
-  text-align: center;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.autocomplete .input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.autocomplete .input-wrapper input{
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    flex-grow: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.autocomplete .suggestions {
+    width: 300px;
+    scroll-behavior: smooth;
+    max-height: 280px;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.autocomplete .suggestions .suggestion-item {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.autocomplete .suggestions .suggestion-item .text {
+    display: flex;
+    align-items: center;
 }

@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Autocomplete, {SuggestionOption} from "./components/Autocomplete";
+import {mockedOptions} from "./helpers/constants";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const getSuggestions = async (query: string): Promise<SuggestionOption[]> => {
+        return await new Promise(resolve => {
+            const options = mockedOptions.filter(option => new RegExp(`^${query}`, "i").test(option.label))
+            resolve(options)
+        })
+    }
+
+    return (
+        <div className="App">
+            <h1>Autocomplete Component</h1>
+            <Autocomplete dataSource={getSuggestions}/>
+        </div>
+    );
 }
 
 export default App;
